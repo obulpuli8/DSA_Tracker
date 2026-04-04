@@ -104,12 +104,12 @@ const Dashboard = () => {
   const streak = insights?.streak || {};
 
   const stats = [
-    { label: 'Problems Solved', value: ov.solved || 0, icon: CheckCircle2, color: 'var(--accent-success)', bg: 'rgba(0,229,160,0.1)' },
+    { label: 'Problems Solved', value: ov.solved || 0, icon: CheckCircle2, color: '#00e5a0', bg: 'rgba(0,229,160,0.1)' },
     { label: 'Current Streak', value: streak.current || 0, icon: Flame, color: '#ff6b35', bg: 'rgba(255,107,53,0.1)', suffix: '🔥' },
-    { label: 'Total Problems', value: ov.total || 0, icon: Code2, color: 'var(--accent-primary)', bg: 'rgba(108,99,255,0.1)' },
-    { label: 'Avg. Time (min)', value: ov.avgTime || 0, icon: Clock, color: 'var(--accent-secondary)', bg: 'rgba(0,212,255,0.1)' },
-    { label: "Today's Count", value: ov.todayCount || 0, icon: Zap, color: 'var(--accent-warning)', bg: 'rgba(255,179,71,0.1)' },
-    { label: 'To Revisit', value: ov.revisit || 0, icon: RotateCcw, color: 'var(--accent-warning)', bg: 'rgba(255,179,71,0.1)' },
+    { label: 'Total Problems', value: ov.total || 0, icon: Code2, color: '#6c63ff', bg: 'rgba(108,99,255,0.1)' },
+    { label: 'Avg. Time (min)', value: ov.avgTime || 0, icon: Clock, color: '#00d4ff', bg: 'rgba(0,212,255,0.1)' },
+    { label: "Today's Count", value: ov.todayCount || 0, icon: Zap, color: '#ffb347', bg: 'rgba(255,179,71,0.1)' },
+    { label: 'To Revisit', value: ov.revisit || 0, icon: RotateCcw, color: '#ff6b9d', bg: 'rgba(255,107,157,0.1)' },
   ];
 
   return (
@@ -132,7 +132,15 @@ const Dashboard = () => {
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start' }}>
               <div>
                 <div className="stat-label">{stat.label}</div>
-                <div className="stat-value" style={{ backgroundImage: `linear-gradient(135deg, ${stat.color}, ${stat.color}cc)` }}>
+                <div
+                  className="stat-value"
+                  style={{
+                    background: `linear-gradient(135deg, ${stat.color}, ${stat.color}99)`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
                   <AnimatedCounter value={stat.value} />
                   {stat.suffix}
                 </div>
@@ -292,7 +300,7 @@ const Dashboard = () => {
             endDate={new Date()}
             values={insights?.heatmap || []}
             classForValue={(value) => {
-              if (!value || value.count === 0) return 'color-empty';
+              if (!value || value.count === 0) return 'color-scale-2';
               if (value.count === 1) return 'color-scale-1';
               if (value.count === 2) return 'color-scale-2';
               if (value.count <= 4) return 'color-scale-3';
