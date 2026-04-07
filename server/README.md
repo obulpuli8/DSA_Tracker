@@ -1,4 +1,4 @@
-# Backend (port 5000)
+# Backend 
 cd server && npm run dev
-# Frontend (port 5173)
+# Frontend
 cd client && npm run dev
