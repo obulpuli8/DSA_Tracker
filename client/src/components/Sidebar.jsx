@@ -5,6 +5,7 @@ import {
   LayoutDashboard, Code2, BarChart3, Plus,
   LogOut, User, Zap, BookOpen, Trophy
 } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -35,11 +36,17 @@ const Sidebar = () => {
     >
       {/* Logo */}
       <div className="sidebar-logo">
-        <div className="logo-icon">⚡</div>
-        <div className="logo-text">
-          <span className="logo-title">AlgoTrack</span>
-          <span className="logo-subtitle">DSA Progress</span>
-        </div>
+        <img
+          src={logo}
+          alt="AlgoTrack"
+          style={{
+            height: 44,
+            width: 'auto',
+            maxWidth: 150,
+            objectFit: 'contain',
+            display: 'block',
+          }}
+        />
       </div>
 
       {/* Nav */}

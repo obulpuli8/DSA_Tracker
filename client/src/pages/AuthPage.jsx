@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import logo from '../assets/logo.png';
 
 const AuthPage = () => {
   const [tab, setTab] = useState('login');
@@ -63,6 +64,35 @@ const AuthPage = () => {
         ))}
       </div>
 
+      {/* ── Back to home ── */}
+      <motion.button
+        onClick={() => navigate('/')}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+        whileHover={{ x: -3 }}
+        style={{
+          position: 'fixed',
+          top: 24,
+          left: 32,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          background: 'rgba(108,99,255,0.12)',
+          border: '1px solid rgba(108,99,255,0.25)',
+          borderRadius: 999,
+          padding: '7px 16px',
+          color: 'var(--accent-primary)',
+          fontSize: 13,
+          fontWeight: 600,
+          cursor: 'pointer',
+          backdropFilter: 'blur(12px)',
+          zIndex: 10,
+        }}
+      >
+        ← Back to Home
+      </motion.button>
+
       <motion.div
         className="auth-card"
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -71,14 +101,25 @@ const AuthPage = () => {
       >
         {/* Logo */}
         <div className="auth-logo">
-          <motion.div
-            className="auth-logo-icon"
-            animate={{ rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
-            ⚡
-          </motion.div>
-          <h1 className="auth-title">AlgoTrack</h1>
+          <motion.img
+            src={logo}
+            alt="AlgoTrack"
+            style={{
+              height: 64,
+              width: 'auto',
+              maxWidth: 200,
+              objectFit: 'contain',
+              display: 'block',
+              margin: '0 auto 12px',
+              filter: 'drop-shadow(0 0 12px rgba(108,99,255,0.6))',
+            }}
+            animate={{ filter: [
+              'drop-shadow(0 0 8px rgba(108,99,255,0.5))',
+              'drop-shadow(0 0 20px rgba(108,99,255,0.9))',
+              'drop-shadow(0 0 8px rgba(108,99,255,0.5))',
+            ]}}
+            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
           <p className="auth-subtitle">Your intelligent DSA companion</p>
         </div>
 
@@ -181,6 +222,16 @@ const AuthPage = () => {
                 style={{ color: 'var(--accent-primary)', fontWeight: 600, background: 'none', fontSize: 13 }}
               >
                 {tab === 'login' ? 'Sign Up' : 'Sign In'}
+              </button>
+            </p>
+
+            <p style={{ textAlign: 'center', marginTop: 8 }}>
+              <button
+                type="button"
+                onClick={() => navigate('/')}
+                style={{ color: 'var(--text-muted)', fontWeight: 500, background: 'none', fontSize: 12 }}
+              >
+                ← Go back to Landing Page
               </button>
             </p>
           </motion.form>
