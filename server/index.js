@@ -15,7 +15,7 @@ app.use(helmet());
 app.use(cors({
   origin: [
     'http://localhost:5173',
-       
+    'https://dsa-tracker-ivory-one.vercel.app',
     process.env.FRONTEND_URL,         // or use env var
   ],
   credentials: true,
