@@ -13,7 +13,11 @@ const app = express();
 // ─── Security & Middleware ────────────────────────────────────────────────────
 app.use(helmet());
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? false : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [
+    'http://localhost:5173',
+       
+    process.env.FRONTEND_URL,         // or use env var
+  ],
   credentials: true,
 }));
 app.use(express.json({ limit: '10kb' }));

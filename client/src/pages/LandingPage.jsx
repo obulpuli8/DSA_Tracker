@@ -719,7 +719,7 @@ const LandingPage = () => {
             style={{fontSize:52,marginBottom:16,display:'inline-block'}}
             animate={{rotate:[0,8,-6,0],scale:[1,1.1,0.95,1]}}
             transition={{duration:3,repeat:Infinity,repeatDelay:2}}
-          >⚡</motion.div>
+          >🛫</motion.div>
           <h2 style={{fontSize:30,fontWeight:800,color:'var(--text-primary)',marginBottom:14}}>Ready to level up?</h2>
           <p style={{color:'var(--text-secondary)',marginBottom:28,fontSize:15}}>Join thousands of engineers tracking their DSA progress smarter.</p>
           <motion.button
@@ -735,7 +735,7 @@ const LandingPage = () => {
 
       {/* ── Footer ── */}
       <footer style={{textAlign:'center',padding:'24px',borderTop:'1px solid var(--border-color)',color:'var(--text-muted)',fontSize:13,position:'relative',zIndex:1}}>
-        © 2026 AlgoTrack — Built with ⚡ for DSA warriors
+        © 2026 AlgoTrack — Built for DSA warriors
       </footer>
     </div>
   );
