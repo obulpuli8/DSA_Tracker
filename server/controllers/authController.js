@@ -54,19 +54,23 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    console.log('🔐 Login attempt for email:', email);
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
+      console.log('❌ User not found:', email);
       return res.status(401).json({ success: false, message: 'Invalid email or password' });
     }
 
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
+      console.log('❌ Password mismatch for:', email);
       return res.status(401).json({ success: false, message: 'Invalid email or password' });
     }
 
     const token = generateToken(user._id);
+    console.log('✅ Login successful for:', email);
 
-    res.json({
+    const response = {
       success: true,
       token,
       user: {
@@ -79,7 +83,9 @@ const login = async (req, res) => {
         bio: user.bio,
         createdAt: user.createdAt,
       },
-    });
+    };
+    console.log('📤 Sending response:', response);
+    res.json(response);
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ success: false, message: 'Server error during login' });
