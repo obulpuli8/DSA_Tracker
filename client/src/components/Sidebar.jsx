@@ -3,15 +3,16 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import {
   LayoutDashboard, Code2, BarChart3, Plus,
-  LogOut, User, Zap, BookOpen, Trophy
+  LogOut, User, Zap, BookOpen, Trophy, Users
 } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 const navItems = [
-  { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/problems', icon: Code2, label: 'Problems' },
-  { to: '/insights', icon: BarChart3, label: 'Smart Insights' },
-  { to: '/add-problem', icon: Plus, label: 'Add Problem' },
+  { to: '/dashboard',   icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/problems',   icon: Code2,            label: 'Problems' },
+  { to: '/insights',   icon: BarChart3,         label: 'Smart Insights' },
+  { to: '/add-problem',icon: Plus,              label: 'Add Problem' },
+  { to: '/friends',    icon: Users,             label: 'Friends' },
 ];
 
 const Sidebar = () => {

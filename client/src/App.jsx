@@ -11,6 +11,7 @@ import ProblemsPage from './pages/ProblemsPage';
 import AddProblem from './pages/AddProblem';
 import InsightsPage from './pages/InsightsPage';
 import ProfilePage from './pages/ProfilePage';
+import FriendsPage from './pages/FriendsPage';
 
 const pageVariants = {
   initial: { opacity: 0, x: 20 },
@@ -87,6 +88,11 @@ const App = () => {
             <Route path="/profile" element={
               <ProtectedRoute>
                 <AppLayout><ProfilePage /></AppLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/friends" element={
+              <ProtectedRoute>
+                <AppLayout><FriendsPage /></AppLayout>
               </ProtectedRoute>
             } />
             <Route path="*" element={<Navigate to="/" replace />} />
